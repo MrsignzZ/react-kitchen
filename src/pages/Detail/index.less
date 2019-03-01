@@ -1,0 +1,85 @@
+.wrapper{
+  .info{
+    overflow: hidden;
+    .img{
+      float: left;
+      display: block;
+      border-radius: 10px;
+    }
+    .introduce{
+      float: left;
+      margin-left: 15px;
+      .menu-name{
+        font-weight: 600;
+        color: red;
+        border-bottom: 1px solid #f1f1f1;
+      }
+      .tags{
+        // background-color: red;
+        width: 360px;
+        height: 45px;
+        border-bottom: 1px solid #f1f1f1;
+      }
+      .statistic{
+        width: 360px;
+        .statistic-item{
+          display: inline-block;
+          margin-right: 60px;
+        }
+      }
+    }
+  }
+  .describe{
+    font: 16px/1.6 "Hiragino Sans GB",STHeiti,"微软雅黑","Microsoft YaHei",Helvetica,Arial,serif;
+    span{
+      color: #BFBFBF;
+      font-size: 40px;
+      height: 16px;
+      line-height: 100%;
+      display: inline-block;
+      overflow: hidden;
+    }
+  }
+  .ingredients{
+    h3{
+      color: #52c41a;
+      .icon{
+        margin: 0 10px;
+      }
+    }
+  }
+  .process{
+    h3{
+      color: #52c41a;
+      .icon{
+        margin: 0 10px;
+      }
+    }
+    .process-item{
+      display: flex;
+      margin: 15px 0;
+      padding-bottom: 15px;
+      border-bottom: 1px solid #f1f1f1;
+      .process-item_img{
+        border-radius: 5px;
+      }
+      .process-item_des{
+        flex: 10;
+        .step{
+          margin-left: 20px;
+          width: 30px;
+          height: 30px;
+          line-height: 30px;
+          text-align: center;
+          border: 1px solid #1DA57A;
+          border-radius: 50%;
+          font-weight: 600;
+          color: #1DA57A;
+        }
+        .describe{
+          margin: 10px 0 0 20px;
+        }
+      }
+    }
+  }
+}
