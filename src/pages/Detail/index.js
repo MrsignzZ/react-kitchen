@@ -22,11 +22,16 @@ const columns = [
 export default class Detail extends React.Component {
   state = {
     selectedTags: [],
+    isLike: false,
+    value: 1163
   };
-
+  // componentWillUpdate(){
+  //   this.getLike()
+  // }
+  // 渲染菜谱步骤
   renderMenuStep = (data) => {
     return (data.map((step, index) => (
-      <div className="process-item">
+      <div className="process-item" key={index}>
         <img className="process-item_img" src={step.pic} alt="" />
         <div className="process-item_des">
           <div className="step">{index+1}</div>
@@ -36,8 +41,27 @@ export default class Detail extends React.Component {
     )))
   }
 
+  getLike = () => {
+    let value = this.state.value
+    let isLike = this.state.isLike
+    // let iconColor = document.getElementsByClassName('like')
+    // console.log(iconColor);
+
+    if (!this.state.isLike) {
+      value++
+      isLike = true
+    } else {
+      value--
+      isLike = false
+    }
+    this.setState({
+      value,
+      isLike
+    })
+  }
+
   render() {
-    console.log(this.props.location.state);
+    // console.log(this.props.location.state);
     const menu  = this.props.location.state
     const tags = Utils.toArray(menu.tag)
     const data = Utils.getRealType(menu.material)
@@ -45,12 +69,10 @@ export default class Detail extends React.Component {
 
     return (
       <div className="wrapper">
-        {/* <h2>翡翠彩蔬卷</h2> */}
-        {/* <img src="http://api.jisuapi.com/recipe/upload/20160719/115138_19423.jpg" alt=""/> */}
         <div className="info">
           <img
             className="img"
-            src="http://api.jisuapi.com/recipe/upload/20160719/115138_19423.jpg"
+            src={menu.pic}
             alt=""
           />
           <div className="introduce">
@@ -75,8 +97,8 @@ export default class Detail extends React.Component {
               <Statistic
                 className="statistic-item"
                 title="支持一下"
-                value={1128}
-                prefix={<Icon type="like" />}
+                value={this.state.value}
+                prefix={<Icon type="like" onClick={this.getLike} className="like"/>}
               />
             </div>
           </div>
