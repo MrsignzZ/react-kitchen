@@ -17,9 +17,9 @@ export default class Home extends React.Component {
   }
 
   // 打开菜谱详情页
-  openMenuDetail = () => {
-    let item = this.state.cardList
-  }
+  // openMenuDetail = () => {
+  //   let item = this.state.cardList
+  // }
 
   // 渲染卡片列表
   renderCardList = (data) => {
@@ -46,21 +46,17 @@ export default class Home extends React.Component {
       )
     })
   }
-  // 从接口获取列表数据
+  // 从接口获取菜单列表数据
   getMenuAPIList = () => {
     let keyword = '白菜'
-    const num = 10
+    const num = 12
     Axios
       .jsonp({
         url: `http://api.jisuapi.com/recipe/search?keyword=${keyword}&num=${num}&appkey=9d1f6ec2fd2463f7`
       })
       .then(res => {
-        if (res.status == 0) {
-          console.log(res);
-
+        if (res.status === '0') {
           let cardList = this.renderCardList(res.result.list)
-
-          console.log(Array.isArray(cardList));
 
           this.setState({
             cardList: cardList
