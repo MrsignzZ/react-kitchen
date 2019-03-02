@@ -1,11 +1,17 @@
 import React from 'react';
 import { Input, Menu, Avatar, Divider, Icon  } from 'antd';
+import Axios from '../../api'
 import './index.less';
 
 const Search = Input.Search;
 const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
 export default class Header extends React.Component {
+
+  menuSearch = () => {
+    window.location = 'http://localhost:3000/Search'
+  }
+
   render() {
     return (
       <div className="container">
@@ -13,12 +19,12 @@ export default class Header extends React.Component {
           <div className="logo">
             <a href="#">小帮厨</a>
           </div>
-          <Search
+            <Search
             style={{ width: '25%' }}
             placeholder="搜索菜谱、食材"
             enterButton="搜菜谱"
             size="large"
-            onSearch={value => console.log(value)}
+            onSearch={this.menuSearch}
           />
           <div className="topbar-menu">
             <Menu mode="horizontal">
