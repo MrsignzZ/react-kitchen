@@ -21,7 +21,6 @@ const columns = [
 ];
 export default class Detail extends React.Component {
   state = {
-    selectedTags: [],
     isLike: false,
     value: 1163
   };
@@ -63,7 +62,7 @@ export default class Detail extends React.Component {
   render() {
     // console.log(this.props.location.state);
     const menu  = this.props.location.state
-    const tags = Utils.toArray(menu.tag)
+    const tags = Utils.toArray(menu.tag).slice(0 ,6)
     const data = Utils.getRealType(menu.material)
     const process = menu.process
 

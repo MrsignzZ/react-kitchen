@@ -42,7 +42,6 @@ export default class NavRight extends React.Component {
       })
       .then((res) => {
         if (res.status === '0') {
-          console.log(res.result[0]);
           let tagList = this.renderTagList(res.result)
           // console.log(tagList);
           this.setState({
