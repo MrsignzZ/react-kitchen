@@ -1,5 +1,3 @@
-import React from 'react'
-
 export default {
   // 字符串转成数组
   toArray(str) {

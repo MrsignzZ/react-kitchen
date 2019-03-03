@@ -12,14 +12,14 @@ export default class Admin extends React.Component {
         <Header />
         <div className="content">
           <Row type="flex" justify="center">
-            <Col span="2">
+            <Col span={2}>
               <NavLeft />
             </Col>
-            <Col span="10">
+            <Col span={10}>
               {/* <Home /> */}
               {this.props.children}
             </Col>
-            <Col span="5" >
+            <Col span={5} >
               <NavRight />
             </Col>
           </Row>

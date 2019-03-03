@@ -1,5 +1,5 @@
 import React from 'react';
-import { Carousel, Card, Col, Row } from 'antd';
+import { Carousel, Card} from 'antd';
 import {NavLink} from 'react-router-dom'
 import './index.less'
 import Axios from '../../api/index'
@@ -13,13 +13,8 @@ export default class Home extends React.Component {
 
   componentWillMount(){
 
-    this.getMenuAPIList()
+    // this.getMenuAPIList()
   }
-
-  // 打开菜谱详情页
-  // openMenuDetail = () => {
-  //   let item = this.state.cardList
-  // }
 
   // 渲染卡片列表
   renderCardList = (data) => {

@@ -1,5 +1,3 @@
-import React from 'react'
-import axios from 'axios'
 import JsonP from 'jsonp'
 
 export default class Axios {
@@ -13,7 +11,7 @@ export default class Axios {
           params: 'callback'
         },
         function (err, res) {
-          if (res.status == '0') {
+          if (res.status === '0') {
             resolve(res)
           } else {
             reject(res.msg)

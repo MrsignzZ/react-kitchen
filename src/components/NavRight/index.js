@@ -1,6 +1,5 @@
 import React from 'react';
-import { Tag, Divider } from 'antd';
-import { NavLink } from 'react-router-dom'
+import { Tag } from 'antd';
 import './index.less'
 import Axios from '../../api'
 import Utils from '../../utils'
@@ -11,12 +10,11 @@ export default class NavRight extends React.Component {
   }
 
   componentWillMount(){
-    this.getTagAPIList()
+    // this.getTagAPIList()
   }
   // 渲染标签列表
   renderTagList = (data) => {
     return data.map((item) => {
-      // console.log(item.list.slice(0, 10));
       return (
         <li className="tags-content">
           <h4>{item.name}</h4>
@@ -32,10 +30,6 @@ export default class NavRight extends React.Component {
 
   // 从接口获取标签列表数据
   getTagAPIList = () => {
-    // let classid = 2 // 标签序号
-    // let start = 0   // 其实条数
-    // let num = 12    // 获取数量
-
     Axios
       .jsonp({
         url: 'http://api.jisuapi.com/recipe/class?appkey=9d1f6ec2fd2463f7'
@@ -43,7 +37,6 @@ export default class NavRight extends React.Component {
       .then((res) => {
         if (res.status === '0') {
           let tagList = this.renderTagList(res.result)
-          // console.log(tagList);
           this.setState({
             tagList: tagList
           })

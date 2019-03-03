@@ -1,5 +1,5 @@
 import React from 'react';
-import { Table, Statistic, Row, Col, Icon, Tag } from 'antd';
+import { Table, Statistic, Icon, Tag } from 'antd';
 import './index.less';
 import Utils from "../../utils";
 
