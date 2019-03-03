@@ -1,45 +1,75 @@
 import React from 'react';
-import { Input, Menu, Avatar, Divider, Icon  } from 'antd';
-import Axios from '../../api'
+import { Input, Menu, Avatar, Divider, Icon, Button } from 'antd';
+import { NavLink } from 'react-router-dom';
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
 import './index.less';
-
-const Search = Input.Search;
+import { transmit } from "../../redux/actions";
 const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
-export default class Header extends React.Component {
+class Header extends React.Component {
+  state = {
+    value: ''
+  }
+
+  static propTypes = {
+    transmit: PropTypes.func.isRequired
+  }
+
+  getInputValue = event => {
+    let value = event.target.value;
+    this.setState({
+      value
+    });
+  };
 
   menuSearch = () => {
-    window.location = 'http://localhost:3000/Search'
-  }
+    let value = this.state.value;
+    // store.dispatch(actions.transmit(value))
+    this.props.transmit(value)
+
+  };
 
   render() {
     return (
       <div className="container">
         <div className="topbar-container">
           <div className="logo">
-            <a href="#">小帮厨</a>
+            <NavLink to="/home">
+              <span>小帮厨</span>
+            </NavLink>
           </div>
-            <Search
+          {/* <Search
             style={{ width: '25%' }}
             placeholder="搜索菜谱、食材"
             enterButton="搜菜谱"
             size="large"
             onSearch={this.menuSearch}
+          /> */}
+          <Input
+            style={{ width: '22%' }}
+            placeholder="搜索菜谱、食材"
+            onChange={event => this.getInputValue(event)}
+            allowClear
+            size="large"
           />
+          <NavLink to="/search">
+            <Button
+              type="primary"
+              icon="search"
+              size="large"
+              onClick={this.menuSearch}
+            >
+              搜菜谱
+            </Button>
+          </NavLink>
+
           <div className="topbar-menu">
             <Menu mode="horizontal">
-              <Menu.Item key="mail">
-                首页
-              </Menu.Item>
-              <Menu.Item key="app">
-                菜单
-              </Menu.Item>
+              <Menu.Item key="mail">首页</Menu.Item>
+              <Menu.Item key="app">菜单</Menu.Item>
               <SubMenu
-                title={
-                  <span className="submenu-title-wrapper">
-                    菜谱分类
-                  </span>
-                }
+                title={<span className="submenu-title-wrapper">菜谱分类</span>}
               >
                 <MenuItemGroup title="常用主题" />
                 <MenuItemGroup title="常见食材" />
@@ -57,12 +87,21 @@ export default class Header extends React.Component {
             </Menu>
           </div>
           <div className="avatar">
-            <Avatar style={{ color: '#f56a00', backgroundColor: '#fde3cf' }}>U</Avatar>
-            <Divider type="vertical"></Divider>
-            <a href="#"><Icon type="book" style={{fontSize: 25}}/></a>
+            <Avatar style={{ color: '#f56a00', backgroundColor: '#fde3cf' }}>
+              U
+            </Avatar>
+            <Divider type="vertical" />
+            <a href="#">
+              <Icon type="book" style={{ fontSize: 25 }} />
+            </a>
           </div>
         </div>
       </div>
     );
   }
 }
+
+export default connect(
+  state => ({keyword: state}),
+  {transmit}
+)(Header)
