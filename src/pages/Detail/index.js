@@ -1,5 +1,5 @@
 import React from 'react';
-import { Table, Statistic, Icon, Tag } from 'antd';
+import { Table, Statistic, Icon, Tag, message } from 'antd';
 import './index.less';
 import Utils from "../../utils";
 
@@ -22,7 +22,9 @@ const columns = [
 export default class Detail extends React.Component {
   state = {
     isLike: false,
-    value: 1163
+    value: 1163,
+    starColor: '#52c41a',
+    isCollect: false
   };
   // componentWillUpdate(){
   //   this.getLike()
@@ -57,6 +59,19 @@ export default class Detail extends React.Component {
       value,
       isLike
     })
+  }
+  // 点击收藏
+  handleCollect = () => {
+    let starColor = this.state.starColor
+    let isCollect = this.state.isCollect
+    starColor = (isCollect ? '#52c41a' : '#FDDA04')
+    isCollect = !isCollect
+    this.setState({
+      starColor,
+      isCollect
+    })
+    message.success((isCollect ? '收藏成功' : '取消收藏'), 1)
+
   }
 
   render() {
@@ -99,6 +114,7 @@ export default class Detail extends React.Component {
                 value={this.state.value}
                 prefix={<Icon type="like" onClick={this.getLike} className="like"/>}
               />
+              <Icon type="star" theme="twoTone" twoToneColor={this.state.starColor} style={{ fontSize: 30 }} onClick={this.handleCollect}/>
             </div>
           </div>
         </div>
