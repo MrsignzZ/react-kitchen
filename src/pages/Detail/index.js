@@ -102,11 +102,11 @@ export default class Detail extends React.Component {
             </div>
           </div>
         </div>
-        <p className="describe">
-          <span>“</span>
-          {menu.content}
-          <span>”</span>
-        </p>
+        <div className="describe" >
+          <span className="marks">“</span>
+          <span dangerouslySetInnerHTML={{ __html: menu.content }}></span>
+          <span className="marks">”</span>
+        </div>
 
         <div className="ingredients">
           <h3><Icon className="icon" type="shopping" theme="twoTone" twoToneColor="#52c41a"/>食材准备</h3>
