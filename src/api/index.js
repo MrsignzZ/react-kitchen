@@ -1,4 +1,5 @@
 import JsonP from 'jsonp'
+import { message } from "antd";
 
 export default class Axios {
   static jsonp(options) {
@@ -12,9 +13,10 @@ export default class Axios {
         },
         function (err, res) {
           if (res.status === '0') {
+            // message.success('This is a message of success', 1)
             resolve(res)
-          } else {
-            reject(res.msg)
+          } else{
+            message.error(res.msg, 1);
           }
         }
       )
