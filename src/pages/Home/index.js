@@ -13,7 +13,7 @@ export default class Home extends React.Component {
 
   componentWillMount(){
 
-    // this.getMenuAPIList()
+    this.getMenuAPIList()
   }
 
   // 渲染卡片列表
