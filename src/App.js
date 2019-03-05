@@ -5,6 +5,7 @@ import Home from './pages/Home'
 import Detail from './pages/Detail'
 import Search from './pages/Search'
 import NoMatch from './pages/NoMatch'
+import Collections from './pages/Collections'
 
 class App extends Component {
   render() {
@@ -16,6 +17,7 @@ class App extends Component {
               <Route path="/common/detail/:id" component={Detail} />
             )} />
             <Route path="/search" component={Search} />
+            <Route path="/collections" component={Collections} />
             <Route path="/" render={() => (
               <Switch>
                 <Route path="/home" component={Home} />

@@ -91,9 +91,9 @@ class Header extends React.Component {
               U
             </Avatar>
             <Divider type="vertical" />
-            <a href="#">
+              <NavLink to="/collections">
               <Icon type="book" style={{ fontSize: 25 }} />
-            </a>
+              </NavLink>
           </div>
         </div>
       </div>
