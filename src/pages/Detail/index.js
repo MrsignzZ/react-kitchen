@@ -21,6 +21,7 @@ const columns = [
 ];
 export default class Detail extends React.Component {
   state = {
+    menu: this.props.location.state,
     isLike: false,
     value: 1163,
     starColor: '#52c41a',
@@ -36,7 +37,7 @@ export default class Detail extends React.Component {
         <img className="process-item_img" src={step.pic} alt="" />
         <div className="process-item_des">
           <div className="step">{index+1}</div>
-          <p className="describe">{step.pcontent}</p>
+          <p className="describe" dangerouslySetInnerHTML={{__html: step.pcontent}}></p>
         </div>
       </div>
     )))
@@ -70,13 +71,17 @@ export default class Detail extends React.Component {
       starColor,
       isCollect
     })
+    const menu = JSON.stringify(this.state.menu)
+    const menuName = this.state.menu.name
+    localStorage.setItem(menuName, menu)
+
     message.success((isCollect ? '收藏成功' : '取消收藏'), 1)
 
   }
 
   render() {
     // console.log(this.props.location.state);
-    const menu  = this.props.location.state
+    const menu  = this.state.menu
     const tags = Utils.toArray(menu.tag).slice(0 ,6)
     const data = Utils.getRealType(menu.material)
     const process = menu.process
