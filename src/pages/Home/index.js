@@ -29,11 +29,9 @@ export default class Home extends React.Component {
             hoverable
             className="home-content-card"
             cover={<img alt="example" src={item.pic} />}
-            onClick={this.openMenuDetail}
             id={item.id}
           >
             <Meta
-              style={{ whiteSpace: 'nowrap' }}
               title={item.name}
               description={item.tag}
             />
