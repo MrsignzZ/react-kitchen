@@ -15,17 +15,16 @@ class Header extends React.Component {
   static propTypes = {
     transmit: PropTypes.func.isRequired
   }
-
+  // 获取Input框的value值
   getInputValue = event => {
     let value = event.target.value;
     this.setState({
       value
     });
   };
-
+  //菜谱搜索
   menuSearch = () => {
     let value = this.state.value;
-    // store.dispatch(actions.transmit(value))
     this.props.transmit(value)
 
   };
@@ -39,13 +38,6 @@ class Header extends React.Component {
               <span>小帮厨</span>
             </NavLink>
           </div>
-          {/* <Search
-            style={{ width: '25%' }}
-            placeholder="搜索菜谱、食材"
-            enterButton="搜菜谱"
-            size="large"
-            onSearch={this.menuSearch}
-          /> */}
           <Input
             style={{ width: '22%' }}
             placeholder="搜索菜谱、食材"
@@ -66,8 +58,7 @@ class Header extends React.Component {
 
           <div className="topbar-menu">
             <Menu mode="horizontal">
-              <Menu.Item key="mail">首页</Menu.Item>
-              <Menu.Item key="app">菜单</Menu.Item>
+
               <SubMenu
                 title={<span className="submenu-title-wrapper">菜谱分类</span>}
               >
@@ -75,15 +66,12 @@ class Header extends React.Component {
                 <MenuItemGroup title="常见食材" />
                 <MenuItemGroup title="时令食材" />
               </SubMenu>
-              <Menu.Item key="alipay">
-                <a
-                  href="https://ant.design"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  作品动态
-                </a>
-              </Menu.Item>
+                <Menu.Item key="alipay">
+                <NavLink to="/topic">话题</NavLink>
+                </Menu.Item>
+              <Menu.Item key="mail"><NavLink to="/menu">菜单</NavLink></Menu.Item>
+              <Menu.Item key="app"><NavLink to="/collections">我的主页</NavLink></Menu.Item>
+
             </Menu>
           </div>
           <div className="avatar">
