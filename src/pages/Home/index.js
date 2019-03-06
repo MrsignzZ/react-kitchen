@@ -1,61 +1,10 @@
 import React from 'react';
-import { Carousel, Card } from 'antd';
-import { NavLink } from 'react-router-dom';
+import { Carousel } from 'antd';
 import './index.less';
-import Axios from '../../api/index';
+import CardList from '../../components/CardList'
 
-const { Meta } = Card;
 export default class Home extends React.Component {
-  state = {
-    cardList: []
-  };
 
-  componentWillMount() {
-    this.getMenuAPIList();
-  }
-
-  // 渲染卡片列表
-  renderCardList = data => {
-    return data.map(item => {
-      return (
-        <NavLink
-          key={item.id}
-          to={{
-            pathname: `/common/detail/${item.id}`,
-            state: item
-          }}
-        >
-          <Card
-            hoverable
-            className="home-content-card"
-            cover={<img alt="example" src={item.pic} />}
-            id={item.id}
-          >
-            <Meta
-              title={item.name}
-              description={item.tag}
-            />
-          </Card>
-        </NavLink>
-      );
-    });
-  };
-  // 从接口获取菜单列表数据
-  getMenuAPIList = () => {
-    let keyword = '春季';
-    const num = 12;
-    Axios.jsonp({
-      url: `http://api.jisuapi.com/recipe/search?keyword=${keyword}&num=${num}&appkey=9d1f6ec2fd2463f7`
-    }).then(res => {
-      if (res.status === '0') {
-        let cardList = this.renderCardList(res.result.list);
-
-        this.setState({
-          cardList: cardList
-        });
-      }
-    });
-  };
   render() {
     return (
       <div className="home-wrap">
@@ -85,9 +34,7 @@ export default class Home extends React.Component {
             />
           </div>
         </Carousel>
-        <div className="home-content">
-          {this.state.cardList}
-        </div>
+        <CardList keyword = '春季'/>
       </div>
     );
   }
