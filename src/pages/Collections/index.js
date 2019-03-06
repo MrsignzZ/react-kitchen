@@ -43,7 +43,7 @@ export default class Collections extends React.Component {
         >
           <Card
             hoverable
-            className="home-content-card"
+            className="card"
             cover={<img alt="example" src={item.pic} />}
             id={item.id}
           >
@@ -56,8 +56,6 @@ export default class Collections extends React.Component {
       );
   };
   render() {
-
-
     return (
       <div className="wrap">
         <div className="user-header">
@@ -79,13 +77,11 @@ export default class Collections extends React.Component {
                 className="statistic-item"
                 title="我的点赞"
                 value={101}
-                className="statistic-item"
               />
               <Statistic
                 className="statistic-item"
                 title="我的关注"
                 value={11}
-                className="statistic-item"
               />
             </div>
           </div>
@@ -100,7 +96,7 @@ export default class Collections extends React.Component {
             }
             key="1"
           >
-            <div className="home-content">
+            <div className="collection-content">
               {this.state.menuList}
             </div>
           </TabPane>
