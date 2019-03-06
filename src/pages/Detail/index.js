@@ -27,9 +27,23 @@ export default class Detail extends React.Component {
     starColor: '#52c41a',
     isCollect: false
   };
-  // componentWillUpdate(){
-  //   this.getLike()
-  // }
+  componentWillMount(){
+    this.getCollection()
+  }
+
+  getCollection = () => {
+    const menuName = this.state.menu.name
+    let isCollect = this.state.isCollect
+    let starColor = this.state.starColor
+    if (localStorage.getItem(menuName) != null) {
+      isCollect = true
+      starColor = '#FDDA04'
+    }
+    this.setState({
+      isCollect,
+      starColor
+    })
+  }
   // 渲染菜谱步骤
   renderMenuStep = (data) => {
     return (data.map((step, index) => (
@@ -46,9 +60,6 @@ export default class Detail extends React.Component {
   getLike = () => {
     let value = this.state.value
     let isLike = this.state.isLike
-    // let iconColor = document.getElementsByClassName('like')
-    // console.log(iconColor);
-
     if (!this.state.isLike) {
       value++
       isLike = true
@@ -65,22 +76,27 @@ export default class Detail extends React.Component {
   handleCollect = () => {
     let starColor = this.state.starColor
     let isCollect = this.state.isCollect
-    starColor = (isCollect ? '#52c41a' : '#FDDA04')
-    isCollect = !isCollect
+    const menu = JSON.stringify(this.state.menu)
+    const menuName = this.state.menu.name
+    if (isCollect === false) {
+      starColor = '#FDDA04'
+      isCollect = !isCollect
+      localStorage.setItem(menuName, menu)
+    } else {
+      starColor = '#52c41a'
+      isCollect = !isCollect
+      localStorage.removeItem(menuName)
+    }
     this.setState({
       starColor,
       isCollect
     })
-    const menu = JSON.stringify(this.state.menu)
-    const menuName = this.state.menu.name
-    localStorage.setItem(menuName, menu)
 
     message.success((isCollect ? '收藏成功' : '取消收藏'), 1)
 
   }
 
   render() {
-    // console.log(this.props.location.state);
     const menu  = this.state.menu
     const tags = Utils.toArray(menu.tag).slice(0 ,6)
     const data = Utils.getRealType(menu.material)
@@ -135,13 +151,6 @@ export default class Detail extends React.Component {
         </div>
         <div className="process">
           <h3><Icon className="icon" type="shopping" theme="twoTone" twoToneColor="#52c41a" />{menu.name}的做法</h3>
-          {/* <div className="process-item">
-						<img className="process-item_img" src="http://api.jisuapi.com/recipe/upload/20160719/162546_72503.jpg" alt=""/>
-            <div className="process-item_des">
-							<div className="step">1</div>
-							<p className="describe"></p>
-            </div>
-          </div> */}
           {this.renderMenuStep(process)}
         </div>
       </div>
