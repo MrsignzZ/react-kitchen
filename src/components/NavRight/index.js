@@ -1,5 +1,6 @@
 import React from 'react';
 import { Tag } from 'antd';
+import { NavLink } from "react-router-dom";
 import './index.less'
 import Axios from '../../api'
 import Utils from '../../utils'
@@ -14,13 +15,13 @@ export default class NavRight extends React.Component {
   }
   // 渲染标签列表
   renderTagList = (data) => {
-    return data.map((item) => {
+    return data.map((item, index) => {
       return (
-        <li className="tags-content">
+        <li className="tags-content" key={index}>
           <h4>{item.name}</h4>
           <div>
-            {Utils.getRandomArrayElements(item.list, 8).map((tag) => (
-                <Tag color="magenta">{tag.name}</Tag>
+            {Utils.getRandomArrayElements(item.list, 8).map((tag, index) => (
+                <Tag color="magenta" key={index}>{tag.name}</Tag>
             ))}
           </div>
         </li>
@@ -49,7 +50,9 @@ export default class NavRight extends React.Component {
       <div className="aside">
         <h3 className="title">
           <span className="hot-tag">热门标签</span>
-          <span className="link-more"><a href="">更多>></a></span>
+          <span className="link-more">
+            <NavLink to="/tags" >更多>></NavLink>
+          </span>
         </h3>
         <ul className="tags">
           {this.state.tagList}
