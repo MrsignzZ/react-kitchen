@@ -10,13 +10,12 @@ export default class Admin extends React.Component {
     return (
       <div className="app">
         <Header />
-        <div className="content">
+        <div className="app-content">
           <Row type="flex" justify="center">
             <Col span={2}>
               <NavLeft />
             </Col>
             <Col span={10}>
-              {/* <Home /> */}
               {this.props.children}
             </Col>
             <Col span={5} >
