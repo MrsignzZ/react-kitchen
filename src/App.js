@@ -63,7 +63,6 @@ class App extends Component {
                 <Redirect to="/home" />
               </Switch>
             )} />
-
           </Switch>
         </Admin>
       </Router>
