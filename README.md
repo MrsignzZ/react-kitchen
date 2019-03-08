@@ -2,22 +2,26 @@
 
 ## 前言
 
-<hr>
-
 学习React不久，觉得实战才是检验自己学习程度的最好方法，也顺便加深一下自己对React的理解，于是做了这么一个小项目分享一下。
 
 
 ## 技术栈
 
-<hr>
-
 - react
 - react-router
 - react-redux
 - less
-## 基本项目搭建
 
-<hr>
+## 预览图
+
+
+![](https://user-gold-cdn.xitu.io/2019/3/8/1695b731081662e4?w=1852&h=901&f=gif&s=4051977)
+
+![](https://user-gold-cdn.xitu.io/2019/3/8/1695b696f3140c0a?w=1852&h=906&f=gif&s=797019)
+
+![](https://user-gold-cdn.xitu.io/2019/3/8/1695b7529e0b58b2?w=1844&h=900&f=gif&s=696585)
+
+## 基本项目搭建
 
 - node开发环境
 - 安装依赖： yarn
@@ -25,7 +29,6 @@
 - 涉及到第三方API接口，小伙伴们可以自己去接口地址申请一个appkey，毕竟请求次数也是有限的嘛
 ## 页面结构
 
-<hr>
 
 ```
 |-react-kitchen 项目名
@@ -64,7 +67,6 @@
 
 ## 功能实现
 
-<hr>
 
 ### 路由配置
 作为一个单页面项目，第一步当然是搭建页面路由了，因为是一个菜谱项目，所以路由还是比较多的，这里我把路由的结构都放在config文件下，在NavLeft导航组件下用map函数去将菜单渲染出来，这样既避免了自己一个一个去写重复的代码，也方便后面添加新的导航。
@@ -242,8 +244,6 @@ handleCollect = () => {
 ```
 ## 项目踩坑
 
-<hr>
-
 1. antd Input.Search<br>
 点击搜索实现路由跳转 因为antd把输入框和按钮封装了 如果用link包裹Search，没输入文字就会直接跳转<br>
 解决办法：不用Input.Search， 直接用input输入框+Button按钮，在Button的点击事件中获取input的value值，再用Link包裹按钮进行路由跳转。这是我想到的办法，如果还有更好的解决办法，也欢迎小伙伴提出~
@@ -258,8 +258,6 @@ handleCollect = () => {
 <div dangerouslySetInnerHTML={{__html: code}}></div>
 ```
 ## 结语
-
-<hr>
 
 ### [项目传送门](https://github.com/MrsignzZ/react-kitchen)
 写项目的时候也遇到了许多小问题，都是慢慢查文档一个一个解决的，不断的思考然后解决问题也是成长的一部分。
