@@ -11,7 +11,7 @@ export default class CardList extends React.Component{
     cardList: []
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.getMenuAPIList(this.props.keyword)
   }
 
@@ -43,7 +43,7 @@ export default class CardList extends React.Component{
       )
     })
   }
-  
+
   // 从接口获取菜单列表数据
   getMenuAPIList = (keyword) => {
     const num = 12

@@ -10,7 +10,7 @@ export default class NavRight extends React.Component {
     tagList: []
   }
 
-  componentWillMount(){
+  componentDidMount(){
     this.getTagAPIList()
   }
   // 渲染标签列表
