@@ -6,11 +6,19 @@ import MenuConfig from '../../config/menuConfig'
 const SubMenu = Menu.SubMenu;
 export default class NavLeft extends React.Component {
 
-  componentWillMount() {
+  // componentWillMount() {
+  //   const menuTreeNode = this.renderMenu(MenuConfig);
+  //   this.setState({
+  //     menuTreeNode
+  //   })
+  // }
+
+  constructor(props) {
+    super(props)
     const menuTreeNode = this.renderMenu(MenuConfig);
-    this.setState({
+    this.state = {
       menuTreeNode
-    })
+    }
   }
   // // 菜单渲染
   renderMenu = (data) => {
