@@ -36,7 +36,7 @@ export default class NavRight extends React.Component {
         url: 'http://api.jisuapi.com/recipe/class?appkey=9d1f6ec2fd2463f7'
       })
       .then((res) => {
-        if (res.status === '0') {
+        if (res.status === 0) {
           let tagList = this.renderTagList(res.result)
           this.setState({
             tagList: tagList

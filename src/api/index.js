@@ -12,7 +12,7 @@ export default class Axios {
           params: 'callback'
         },
         function (err, res) {
-          if (res.status === '0') {
+          if (res.status === 0) {
             // message.success('This is a message of success', 1)
             resolve(res)
           } else{

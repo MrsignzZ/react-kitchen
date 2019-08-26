@@ -52,7 +52,7 @@ export default class CardList extends React.Component{
         url: `http://api.jisuapi.com/recipe/search?keyword=${keyword}&num=${num}&appkey=9d1f6ec2fd2463f7`
       })
       .then(res => {
-        if (res.status === '0') {
+        if (res.status === 0) {
           let cardList = this.renderCardList(res.result.list)
           this.setState({
             cardList: cardList
